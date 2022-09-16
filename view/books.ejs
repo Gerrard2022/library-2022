@@ -1,0 +1,70 @@
+<%- include('partials/header'); %>
+
+<input type="search" class="form-control m-3" id="search" placeholder="Search a book" data-search style="width: 25%;">
+
+<table class="table table-hover">
+    <thead>
+      <tr>
+            <th>#</th>
+            <th>Book title</th>
+            <th>Book number</th>
+            <th>Author</th>
+            <th>Status</th>
+      </tr>
+    </thead>
+    <% if (log.length > 0) { %>
+        <% log.forEach((item, index) => { %>
+            <tbody>
+                <tr>
+                    <th><%= index + 1 %></th>
+                    <td class="name"><%= item.title %></td>
+                    <td><%= item.number %></td>
+                    <td><%= item.author %></td>
+                   <td><a class="btn delete" data-doc="<%= item._id %>"><button type="button" class="btn btn-danger">Delete</button></a></td> 
+                </tr>
+            </tbody>
+       <% }) %>
+
+   <% } else { %>
+    <h2>No Books are detected in the database</h2>
+  <% } %>
+  </table>
+
+  <script>
+    const trash = document.querySelectorAll('a.btn.delete');
+  
+      trash.forEach(item => {
+  
+          item.addEventListener('click', () => {
+  
+          const endpoint = `/books/${ item.dataset.doc }`;
+  
+  
+          fetch(endpoint, {
+            method: 'DELETE'
+          })
+          .then((response) => response.json())
+          .then((data) => window.location.href = data.redirect)
+          .catch((err) => console.log(err))
+          });
+  
+      });
+  
+    const searchInput = document.querySelector('[data-search]');
+    const name = document.querySelectorAll('.name');
+  
+      searchInput.addEventListener('input', (e) => {
+        const value = e.target.value.toLowerCase();
+  
+        name.forEach(item => {
+          const parent = item.parentElement;;
+          const isVisible =item.innerText.toLowerCase().includes(value);
+          parent.classList.toggle('hide', !isVisible);
+        })
+  
+      });
+  
+  
+  </script>
+
+<%- include('partials/footer'); %>

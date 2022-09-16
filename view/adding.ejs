@@ -1,0 +1,105 @@
+<%- include('partials/header'); -%>
+
+ <form action="/add-student" method="post"> 
+    <h2>Borrowing student's data</h2>
+    <label for="student_id">Student's ID</label>
+    <input type="text" name="student_id" required>
+
+    <label for="student_name">Student's name</label>
+    <input type="text" name="student_name" required>
+
+    <label for="class">Class</label>
+    <input type="text" name="class" required>
+
+    <label for="book_name">Book name</label>
+    <input type="text" name="book_name" required>
+
+    <label for="book_number">Book number</label>
+    <input type="text" name="book_number" required>
+    <div class="error"></div>
+
+    <label for="borrowed_date">Borrowed date</label>
+    <input type="date" name="borrowed_date" required>
+
+    <label for="return_date">Return Date</label>
+    <input type="date" name="return_date" required>
+
+    <button class="btn btn-success mt-3">Add student</button>
+</form>
+
+  <!-- <script>
+
+    const form = document.querySelector('form');
+    const bookError = document.querySelector('.error');
+
+    form.addEventListener('submit',  (e) => {
+
+        bookError.innerText = '';
+
+        // setTimeout(() => {
+        //     bookError.innerText = 'This book is already registered';
+        // }, 4000)
+        // fetch('/add-student', {
+        //     method: "POST"
+        // })
+        // .then(res => res.json())
+        // .then((data) => {
+        //     console.log(data);
+        //     if(data.errors) {
+        //         bookError.innerText = data.errors.ID;
+        //     }
+        // })
+        // .catch(err => console.log(err));
+       
+    });
+
+</script>    -->
+
+
+ <!-- <script>
+
+    const form = document.querySelector('form');
+    const error = document.querySelector('.error');
+
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        error.textContent = '';
+
+        // values
+        const student_id = form.student_id.value;
+        const student_name = form.student_name.value;
+        const Class = form.class.value;
+        const book_name = form.book_name.value;
+        const book_number = form.book_number.value;
+        const borrowed_date= form.borrowed_date.value;
+        const return_date = form.return_date.value;
+
+
+        try{
+            const res = await fetch('/add-student', {
+                method: 'POST',
+                body: JSON.stringify({ student_id, student_name, Class, book_name, book_number, borrowed_date, return_date }),
+                headers:{ 'content-type': 'application/json' }
+            });
+
+            const data = await res.json();
+            console.log(data);
+
+            // if(data.errors){
+            //     error.textContent = data.errors.ID;
+            // }
+            // else{
+            //     location.assign('/students');
+            // }
+        }
+        catch(err){
+            console.log(err);
+        }
+
+        
+    })
+
+</script>  -->
+
+<%- include('partials/footer'); -%>

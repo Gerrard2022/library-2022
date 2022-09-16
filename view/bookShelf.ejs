@@ -1,0 +1,16 @@
+<%- include('partials/header'); -%>
+
+<form action="/add-book" method="post">
+    <h2>New Book registration</h2>
+    <label for="student_id">Book Title</label>
+    <input type="text" name="title" required>
+
+    <label for="student_name">Book number</label>
+    <input type="text" name="number" required>
+
+    <label for="class">Author</label>
+    <input type="text" name="author" required>
+
+
+    <button class="btn btn-success mt-4">Add book</button>
+</form>

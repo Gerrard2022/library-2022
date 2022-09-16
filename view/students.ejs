@@ -1,0 +1,78 @@
+<%- include('partials/header'); %>
+
+<input type="search" class="form-control m-3" id="search" placeholder="Search a student" data-search style="width: 25%;">
+
+<table class="table table-hover">
+    <thead>
+      <tr>
+            <th scope="col">#</th>
+            <th scope="col">Student ID</th>
+            <th scope="col">Student Name</th>
+            <th scope="col">Class</th>
+            <th scope="col">Book name</th>
+            <th scope="col">Book number</th>
+            <th scope="col">Borrowed date</th>
+            <th scope="col">Return date</th>
+            <th scope="col">Status</th>
+      </tr>
+    </thead>
+    <% if (log.length > 0) { %>
+        <% log.forEach((item, index) => { %>
+            <tbody>
+                <tr>
+                    <th  scope="row"><%= index + 1 %></th>
+                    <td><%= item.student_id %></td>
+                    <td class="name"><%= item.student_name %></td>
+                    <td><%= item.class %></td>
+                    <td><%= item.book_name %></td>
+                    <td><%= item.book_number %></td>
+                    <td><%= item.borrowed_date %></td>
+                    <td><%= item.return_date %></td>
+                    <td><a class="btn delete" data-doc="<%= item._id %>"><button type="button" class="btn btn-danger">Returned</button></a></td> 
+                </tr>
+            </tbody>
+       <% }) %>
+
+   <% } else { %>  
+    <h2>No students are detected in the database</h2>
+  <% } %>
+  </table>
+
+<script>
+  const trash = document.querySelectorAll('a.btn.delete');
+
+    trash.forEach(item => {
+
+        item.addEventListener('click', () => {
+
+        const endpoint = `/students/${ item.dataset.doc }`;
+
+
+        fetch(endpoint, {
+          method: 'DELETE'
+        })
+        .then((response) => response.json())
+        .then((data) => window.location.href = data.redirect)
+        .catch((err) => console.log(err))
+        });
+
+    });
+
+  const searchInput = document.querySelector('[data-search]');
+  const name = document.querySelectorAll('.name');
+
+    searchInput.addEventListener('input', (e) => {
+      const value = e.target.value.toLowerCase();
+
+      name.forEach(item => {
+        const parent = item.parentElement;;
+        const isVisible =item.innerText.toLowerCase().includes(value);
+        parent.classList.toggle('hide', !isVisible);
+      })
+
+    });
+
+
+</script>
+
+<%- include('partials/footer'); %>
