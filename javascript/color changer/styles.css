@@ -1,0 +1,149 @@
+@import url("https://fonts.googleapis.com/css?family=Open+Sans|Roboto:400,700&display=swap");
+
+
+*, ::after, ::before{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: "Open Sans", sans-serif;
+    background-color: #f1f5f8;
+    color: #102a42;
+    line-height: 1.5;
+    font-size: 0.875rem;
+}
+
+ul {
+    list-style-type: none;
+  }
+
+a {
+    text-decoration: none;
+  }
+
+h1, h2, h3, h4{
+    text-transform: capitalize;
+    letter-spacing: 0.1rem;
+    line-height: 1.25rem;
+    margin-bottom: 0.75rem;
+    font-family: "Roboto", sans-serif;;
+}
+
+h1 {
+    font-size: 3rem;
+  }
+  h2 {
+    font-size: 2rem;
+  }
+  h3 {
+    font-size: 1.25rem;
+  }
+  h4 {
+    font-size: 0.875rem;
+  }
+  p {
+    margin-bottom: 1.25rem;
+    color: #617d98;
+  }
+
+  nav{
+    background-color: #fff;
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  }
+
+  .nav-center{
+    width: 90vh;
+    max-width: 620px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .nav-center h4 {
+    margin-bottom: 0;
+    color: #49a6e9;
+  }
+
+.nav-links{
+    display: flex;
+}
+
+nav a {
+    text-transform: capitalize;
+    font-weight: 700;
+    font-size: 1rem;
+    color: #063251;
+    letter-spacing: 0.1rem;
+    margin-right: 1rem;
+}
+
+.container {
+  text-align: center;
+  width: 50%;
+  min-width: 60%;
+  margin: 6rem auto;
+}
+
+.container h2 {
+    background: #222;
+    color: #fff;
+    padding: 1rem;
+    border-radius: 0.25rem;
+    margin-bottom: 2.5rem;
+}
+
+.color{
+    color: #49a6e9;
+}
+
+.btn-hero{
+    font-family: "Roboto", sans-serif;
+    text-transform: uppercase;
+    background: transparent;
+    color: #222;
+    letter-spacing: 0.1rem;
+    display: inline-block;
+    font-weight: 700;
+    font-size: 1rem;
+    padding: 0.75rem 1.25rem;
+    cursor: pointer;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    border-radius: .25rem;
+    border: 2px solid #222;
+    transition: all 0.3s linear;
+}
+
+.btn-hero:hover{
+    color: #fff;
+    background: #222;
+}
+
+  @media screen and (min-width: 800px) {
+    h1 {
+      font-size: 4rem;
+    }
+    h2 {
+      font-size: 2.5rem;
+    }
+    h3 {
+      font-size: 1.75rem;
+    }
+    h4 {
+      font-size: 1rem;
+    }
+    body {
+      font-size: 1rem;
+    }
+    h1,
+    h2,
+    h3,
+    h4 {
+      line-height: 1;
+    }
+  }
